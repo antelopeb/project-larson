@@ -1,0 +1,13 @@
+/* Combo Button */
+.larson .dijitComboButtonRtl .dijitStretch {
+  -moz-border-radius: 0 5px 5px 0;
+  border-radius: 0 5px 5px 0;
+}
+.larson .dijitComboButtonRtl .dijitArrowButton {
+  -moz-border-radius: 5px 0 0 5px;
+  border-radius: 5px 0 0 5px;
+  padding: 3px 0 4px;
+  border-left-width: 1px;
+  border-right-width: 0;
+}
+/* End Combo Button */
