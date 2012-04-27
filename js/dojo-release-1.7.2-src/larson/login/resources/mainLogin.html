@@ -1,4 +1,12 @@
 <div>
 	<h1>Login Page</h1>
-	<button data-dojo-type="dijit.form.Button">Login</button>
+	<label for="username">Username</label><br />
+	<input data-dojo-type="dijit.form.ValidationTextBox" id="username" name="username" placeholder="enter your username" /><br />
+	<span id="usernameError"></span>
+	<br /><br />
+	<label for="password">Password</label><br />
+	<input data-dojo-type="dijit.form.ValidationTextBox" id="password" name="password" type="password" /><br />
+	<span id="passwordError"></span>
+	<br /><br />
+	<button data-dojo-type="dijit.form.Button" id="loginButton">Login</button>
 </div>

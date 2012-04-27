@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<title>Entry Page</title>
+
+<script data-dojo-config="parseOnLoad:true, async:true" src="js/dojo-release-1.7.2-src/dojo/dojo.js"></script>
+<link rel="stylesheet" rel="stylesheet" href="js/dojo-release-1.7.2-src/dijit/themes/larson/larson.css"/>
+
+<script type="text/javascript">
+	var dojoConfig = {
+		baseUrl: "/js/",
+		tlmSiblingOfDojo: false,
+		packages: [
+			{ name: "dojo", location: "dojo" },
+			{ name: "dijit", location: "dijit" },
+			{ name: "dojox", location: "dojox" },
+			{ name: "larson", location: "larson" }
+		]
+	}
+	
+</script>
+
+
+</head>
+
+<body class="larson">
+	<div class="pageWrapper">
+		<div>Hello, <span id="firstName"></span>, you've been logged in</div>
+	</div><!-- .pageWrapper -->
+</body>
+</html>
