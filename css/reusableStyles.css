@@ -1,0 +1,62 @@
+/* styles for text */
+.times { font-family: Times New Roman, Times, serif; letter-spacing: -1px; }
+.helvetica { font-family: Helvetica, Arial, sans-serif; }
+.bold { font-weight: bold; }
+.bigText { font-size: 1.3em; }
+.grayText { color: #666; }
+.whiteText { color: #fff; }
+.whiteText a { color: #fff; }
+.whiteText a:hover { color: #efefef; }
+
+/*basic layout styles */
+.clearFix { clear: both; }
+.floatRight { float: right; }
+.floatLeft { float: left; }
+.spaceAfter { padding-bottom: 15px; }
+.spacer { height: 20px; }
+.smallSpacer { height: 10px; }
+.smallerSpacer { height: 5px; }
+.spaceRight { margin-right: 10px; }
+
+/*padding and margins*/
+.padding5 { padding: 5px; }
+.padding10 { padding: 10px; }
+.padding15 { padding: 15px; }
+.padding20 { padding: 20px; }
+.margin10 { margin: 10px; }
+.margin30 { margin: 30px; }
+.marginRight { margin-right: 10px; }
+.marginTop { margin-top: 10px; }
+.overflowAuto { overflow: auto; }
+
+/*simple backgrounds*/
+.grayBackground { background-color: #e5e5e5; }
+.darkGrayBackground { background-color: #666; }
+
+/*rounded corners and shadows*/
+.borderRadius { border-radius: 5px; -moz-border-radius: 5px; }
+.boxShadow { box-shadow: 2px 2px 3px #999; -moz-box-shadow: 2px 2px 3px #999; -webkit-box-shadow: 2px 2px 3px #999; }
+
+/*borders of every kind*/
+.border { border: 1px solid #000; }
+.borderRight { border-right: 1px solid #000; }
+.borderTop { border-top: 1px solid #000; }
+.borderLeft { border-left: 1px solid #000; }
+.borderBottom { border-bottom: 1px solid #000; }
+.grayBorder { border-color: #666; }
+.whiteBorder { border-color: #fff; }
+.lightGrayBorder { border-color :#999 }
+
+/*alignment anyone?*/
+.alignMiddle { vertical-align: middle; }
+.alignCenter { text-align: center; }
+
+/*a class for making an auto width image*/
+.autoImage { width: 100%; height: auto; }
+
+/*some basic classes for styling*/
+.quarterWidth { width: 25%; }
+
+.hidden {
+	display: none;
+}

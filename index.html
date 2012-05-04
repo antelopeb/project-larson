@@ -2,10 +2,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 <head>
-<title>Login Page</title>
+<title>Larson || Your portal for local food and artisan crafts</title>
 
-<script data-dojo-config="parseOnLoad:true, async:true" src="js/dojo-release-1.7.2-src/dojo/dojo.js"></script>
+<script data-dojo-config="async:true" src="js/dojo-release-1.7.2-src/dojo/dojo.js"></script>
 <link rel="stylesheet" rel="stylesheet" href="js/dojo-release-1.7.2-src/dijit/themes/larson/larson.css"/>
+<link rel="stylesheet" rel="stylesheet" href="css/appStyles.css"/>
 
 <script type="text/javascript">
 	var dojoConfig = {
@@ -19,7 +20,20 @@
 		]
 	}
 	
-	require(["larson/login/mainLogin"], function(){})
+	require(["dojo/ready","dojo/cookie","larson/main","larson/login/mainLogin","larson/login/signout", 
+	"dijit/form/TextBox", "dijit/form/Button", "larson/login/register"], function(ready, cookie, main){
+		ready(function(){
+			if(cookie("loginCookie")) {
+				var loginCookie = dojo.fromJson(cookie("loginCookie"))
+			
+				dojo.addClass(dojo.byId("signinNode"), "hidden")
+				dojo.removeClass(dojo.byId("signedinNode"), "hidden")
+				dojo.byId("signedinNode").innerHTML = "Hi " + loginCookie.firstname + ", welcome back!"
+				dojo.removeClass(dojo.byId("signoutNode"), "hidden")
+				dojo.addClass(dojo.byId("registerNode"), "hidden")
+			}
+		})
+	})
 
 </script>
 
@@ -28,7 +42,39 @@
 
 <body class="larson">
 	<div class="pageWrapper">
-		<div data-dojo-type="larson.login.mainLogin"></div>
+		<div class="toolBar grayBackground border lightGrayBorder">
+			<div class="floatLeft padding20 borderRight lightGrayBorder darkGrayBackground whiteText bigText bold">
+				Larson
+			</div>
+			<div class="floatLeft padding10">
+				<input data-dojo-type="dijit.form.TextBox" />
+				<button data-dojo-type="dijit.form.Button">Search</button>
+			</div>
+			<div class="floatRight">
+				<!-- bring in registration widget -->
+				<div data-dojo-type="larson.login.register" class="floatLeft padding20 borderLeft lightGrayBorder" id="registerNode"></div>
+				<div class="floatLeft padding20 borderLeft lightGrayBorder">
+					Cart
+				</div>
+				<div class="floatLeft padding20 borderLeft lightGrayBorder hidden" id="signedinNode"></div>
+				<!-- bring in sign in widget -->
+				<div data-dojo-type="larson.login.mainLogin" class="floatLeft padding20 borderLeft lightGrayBorder" id="signinNode"></div>
+				<!-- bring in sign out widget -->
+				<div data-dojo-type="larson.login.signout" class="floatLeft padding20 borderLeft lightGrayBorder hidden" id="signoutNode"></div>
+				<div class="floatLeft padding20 borderLeft lightGrayBorder">
+					Help
+				</div>
+			</div>
+			<div class="clearFix"></div>
+		</div><!-- .toolBar -->
+		<div class="mainContentArea marginTop">
+			<div class="sideBar border padding10 lightGrayBorder borderRadius marginRight grayBackground floatLeft">
+				Sidebar Items go here
+			</div>
+			<div>
+				Main item listings will go here
+			</div>
+		</div>
 	</div><!-- .pageWrapper -->
 </body>
 </html>

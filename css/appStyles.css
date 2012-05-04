@@ -1,0 +1,53 @@
+@import url("reusableStyles.css");
+@import url("../js/dojo-release-1.7.2-src/larson/login/resources/loginForm.css");
+@import url("../js/dojo-release-1.7.2-src/larson/login/resources/register.css");
+
+/* main application styles */
+
+body {
+	font-family: Tahoma, Verdana, sans-serif;
+	font-size: .8em;
+	line-height: 1.3em;
+	margin: 30px;
+	padding: 0;
+}
+
+a {
+	color: #000;
+}
+a:hover {
+	color: #666;
+}
+
+.sideBar {
+	width: 200px;
+}
+
+.inlineError {
+	font-size: .85em;
+	color: red;
+	line-height: 1.5em;
+}
+
+.plainTextButton .dijitButtonNode {
+	border: 0;
+	padding: 0;
+}
+
+.plainTextButtonHover .dijitButtonNode .dijitButtonText {
+	color: #666;
+	text-decoration: underline;
+}
+
+.larson .dijitButton.cancelButton .dijitButtonNode {
+	background: none;
+	border: 0;
+	box-shadow: none;
+	-moz-box-shadow: none;
+}
+.larson .dijitButton.cancelButton .dijitButtonNode .dijitButtonText {
+	text-decoration: underline;
+}
+.larson .dijitButtonHover.cancelButton .dijitButtonNode .dijitButtonText {
+	text-decoration: none;
+}

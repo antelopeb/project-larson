@@ -1,12 +1,21 @@
 <div>
-	<h1>Login Page</h1>
-	<label for="username">Username</label><br />
-	<input data-dojo-type="dijit.form.ValidationTextBox" id="username" name="username" placeholder="enter your username" /><br />
-	<span id="usernameError"></span>
-	<br /><br />
-	<label for="password">Password</label><br />
-	<input data-dojo-type="dijit.form.ValidationTextBox" id="password" name="password" type="password" /><br />
-	<span id="passwordError"></span>
-	<br /><br />
-	<button data-dojo-type="dijit.form.Button" id="loginButton">Login</button>
+	<div data-dojo-type="dijit.form.DropDownButton" label="Sign In" data-dojo-props="baseClass: 'plainTextButton'">
+		<div data-dojo-type="dijit.TooltipDialog" id="signinTooltip">
+			<label for="username">Username</label><br />
+			<input data-dojo-type="dijit.form.TextBox" id="username" name="username" /><br />
+			<span id="usernameError" class="inlineError"></span>
+			<br />
+			<label for="password">Password</label><br />
+			<input data-dojo-type="dijit.form.TextBox" id="password" name="password" type="password" /><br />
+			<span id="passwordError" class="inlineError"></span>
+			<br />
+			<div class="floatLeft">
+				<button data-dojo-type="dijit.form.Button" id="loginButton">Login</button>
+			</div>
+			<div class="floatRight">
+				Need an account?<br /><a href="#">Sign up</a> now!
+			</div>
+			<div class="clearFix"></div>
+		</div>
+	</div>
 </div>
