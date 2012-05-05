@@ -6,15 +6,17 @@
 		<label for="lastName">Last Name</label><br />
 		<input name="lastName" data-dojo-type="dijit.form.ValidationTextBox" data-dojo-props="required:'true'" />
 		<br /><br />
-		<label for="emailAddress">Email address (this will be your login, too!)</label><br />
-		<input name="emailAddress" data-dojo-type="dijit.form.ValidationTextBox" data-dojo-props="required:'true'" id="emailAddress" />
-		<span id="emailError"></span><br />
-		<br />
+		<label for="key">Email address (this will be your login, too!)</label><br />
+		<input name="key" data-dojo-type="dijit.form.ValidationTextBox" data-dojo-props="required:'true'" id="emailAddress" />
+		<span id="emailError" class="inlineError"></span>
+		<br /><br />
 		<label for="password">Enter a password</label><br />
-		<input name="password" data-dojo-type="dijit.form.ValidationTextBox" data-dojo-props="required:'true'" type="password" />
+		<input name="password" data-dojo-type="dijit.form.ValidationTextBox" data-dojo-props="required:'true'" type="password" id="password1" />
+		<!-- take this out for now
 		<br /><br />
 		<label for="password2">Please re-enter your password</label><br />
-		<input name="password2" data-dojo-type="dijit.form.ValidationTextBox" data-dojo-props="required:'true'" type="password" />
+		<input name="password2" data-dojo-type="dijit.form.ValidationTextBox" data-dojo-props="required:'true'" type="password" id="password2" />
+		<span id="passwordError" class="inlineError"></span> -->
 		<br /><br />
 		<button data-dojo-type="dijit.form.Button" id="registerButton" disabled="disabled">Register</button>
 		<button data-dojo-type="dijit.form.Button" id="cancelButton" data-dojo-props="class:'cancelButton'" onClick="dijit.byId('registerDialog').hide()">Cancel</button>

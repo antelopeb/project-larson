@@ -48,6 +48,7 @@ define([
 
         	this.dialog.show()
         	
+        	//add the form watcher
         	var myForm = dijit.byId("registerForm")
         	
 			myForm.watch('value', function() {
@@ -58,27 +59,34 @@ define([
 					dijit.byId("registerButton").setAttribute('disabled', true)
 				}
 			})
-			var emailAddress = dijit.byId("emailAddress")
-        	connect.connect(emailAddress, "onChange", this.checkEmailAddress)
-        },
-        checkEmailAddress: function() {
-        	this.inherited(arguments)
-        	alert("checking email")
-			this.username = dijit.byId("emailAddress").get("value")
-        	
-			var xhrArgs = {
-				url: "http://localhost/users/"+this.username,
-				handleAs: "json",
-				load: function(data) { 
-					dojo.byId("emailError").innerHTML = "This email is already taken"
-					dijit.byId("emailAddress").setAttribute("value", "")
-				},
-				error: function(error) {
-					dojo.byId("emailError").innerHTML = ""
-				}
-			}
 			
-			var deferred = dojo.xhrGet(xhrArgs)
+			//add the email validator
+			var emailAddress = dijit.byId("emailAddress")
+        	
+        	connect.connect(emailAddress, "onChange", function() {
+				//todo - figure out how to not inline this function and make it a mixin
+				this.username = dijit.byId("emailAddress").get("value")
+				
+				var xhrArgs = {
+					url: "http://localhost/users/"+this.username,
+					handleAs: "json",
+					load: function(data) { 
+						dojo.byId("emailError").innerHTML = "This email is already taken"
+						dijit.byId("emailAddress").setAttribute("value", "")
+					},
+					error: function(error) {
+						dojo.byId("emailError").innerHTML = ""
+					}
+				}
+				
+				var deferred = dojo.xhrGet(xhrArgs)
+        	})
+        	
+        	var registerButton = dijit.byId("registerButton")
+        	
+        	connect.connect(registerButton, "onClick", function() {
+        		alert("hello there")
+        	})        	
         }
     })
 
