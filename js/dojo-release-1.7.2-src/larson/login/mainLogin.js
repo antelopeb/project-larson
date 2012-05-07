@@ -64,12 +64,18 @@ define([
 					if(this.password == data.password) {
 						dojo.addClass(dojo.byId("signinNode"), "hidden")
 						dojo.removeClass(dojo.byId("signedinNode"), "hidden")
-						dojo.byId("signedinNode").innerHTML = "Hi " + data.firstname + ", welcome back!"
+						//dojo.byId("signedinNode").innerHTML = "Hi " + data.firstname + ", welcome back!"
+						var personButton = new dijit.form.DropDownButton({ 
+							label: data.firstname,
+							baseClass: "plainTextButton",
+							id: "accountButton",
+							dropDown: new larson.login.userMenu
+						}, "signedinButton")
 						dojo.byId("passwordError").innerHTML = ""
 						dijit.popup.close(dijit.byId("signinTooltip"))
-						dojo.removeClass(dojo.byId("signoutNode"), "hidden")
+						//dojo.removeClass(dojo.byId("signoutNode"), "hidden")
 						dojo.addClass(dojo.byId("registerNode"), "hidden")
-						cookie("loginCookie", dojo.toJson(data), { expires: 1 })
+						cookie("loginCookie", dojo.toJson(data), {  })
 					}
 					else {
 						dojo.byId("passwordError").innerHTML = "You entered the wrong password"

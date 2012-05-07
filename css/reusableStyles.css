@@ -27,6 +27,7 @@
 .margin30 { margin: 30px; }
 .marginRight { margin-right: 10px; }
 .marginTop { margin-top: 10px; }
+.marginBottom { margin-bottom: 10px; }
 .overflowAuto { overflow: auto; }
 
 /*simple backgrounds*/
@@ -45,11 +46,12 @@
 .borderBottom { border-bottom: 1px solid #000; }
 .grayBorder { border-color: #666; }
 .whiteBorder { border-color: #fff; }
-.lightGrayBorder { border-color :#999 }
+.lightGrayBorder { border-color :#999; }
 
 /*alignment anyone?*/
 .alignMiddle { vertical-align: middle; }
 .alignCenter { text-align: center; }
+.alignRight { text-align: right; }
 
 /*a class for making an auto width image*/
 .autoImage { width: 100%; height: auto; }

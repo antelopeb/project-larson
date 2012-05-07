@@ -20,17 +20,26 @@
 		]
 	}
 	
-	require(["dojo/ready","dojo/cookie","larson/main","larson/login/mainLogin","larson/login/signout", 
-	"dijit/form/TextBox", "dijit/form/Button", "larson/login/register"], function(ready, cookie, main){
+	require(["dojo/parser","dojo/ready","dojo/cookie","larson/main","larson/login/mainLogin", 
+	"dijit/form/TextBox", "dijit/form/Button", "larson/login/register", "larson/login/userMenu"], 
+	function(parser, ready, cookie, main){
 		ready(function(){
 			if(cookie("loginCookie")) {
 				var loginCookie = dojo.fromJson(cookie("loginCookie"))
 			
 				dojo.addClass(dojo.byId("signinNode"), "hidden")
 				dojo.removeClass(dojo.byId("signedinNode"), "hidden")
-				dojo.byId("signedinNode").innerHTML = "Hi " + loginCookie.firstname + ", welcome back!"
-				dojo.removeClass(dojo.byId("signoutNode"), "hidden")
+				//dojo.byId("signedinNode").innerHTML = "Hi " + loginCookie.firstname + ", welcome back!"
+				var personButton = new dijit.form.DropDownButton({ 
+					label: loginCookie.firstname,
+					baseClass: "plainTextButton",
+					id: "accountButton",
+					dropDown: new larson.login.userMenu
+				}, "signedinButton")
+				//dojo.removeClass(dojo.byId("signoutNode"), "hidden")
 				dojo.addClass(dojo.byId("registerNode"), "hidden")
+				
+				parser.parse()
 			}
 		})
 	})
@@ -42,38 +51,199 @@
 
 <body class="larson">
 	<div class="pageWrapper">
-		<div class="toolBar grayBackground border lightGrayBorder">
-			<div class="floatLeft padding20 borderRight lightGrayBorder darkGrayBackground whiteText bigText bold">
+		<div class="topToolbar">
+			<div class="floatLeft padding10 bigText bold">
 				Larson
 			</div>
-			<div class="floatLeft padding10">
+			<div class="floatRight padding10">
+				<!-- bring in registration widget -->
+				<div data-dojo-type="larson.login.register" class="floatLeft borderRight" id="registerNode"></div>
+				<div class="floatLeft hidden" id="signedinNode">
+					<div id="signedinButton"></div>
+				</div>
+				<!-- bring in sign in widget -->
+				<div data-dojo-type="larson.login.mainLogin" class="floatLeft" id="signinNode"></div>
+			</div>
+			<div class="clearFix"></div>
+		</div>
+
+		<div class="toolBar">
+			<div class="floatLeft padding10 grayBackground border lightGrayBorder borderRadius" style="width:80%">
 				<input data-dojo-type="dijit.form.TextBox" />
 				<button data-dojo-type="dijit.form.Button">Search</button>
 			</div>
-			<div class="floatRight">
-				<!-- bring in registration widget -->
-				<div data-dojo-type="larson.login.register" class="floatLeft padding20 borderLeft lightGrayBorder" id="registerNode"></div>
+			<div class="floatLeft" style="width:1%"></div>
+			<div class="floatRight grayBackground border lightGrayBorder borderRadius">
+				<div class="floatLeft padding20">
+					About
+				</div>
+				<div class="floatLeft padding20 borderLeft lightGrayBorder">
+					CSA's
+				</div>
 				<div class="floatLeft padding20 borderLeft lightGrayBorder">
 					Cart
-				</div>
-				<div class="floatLeft padding20 borderLeft lightGrayBorder hidden" id="signedinNode"></div>
-				<!-- bring in sign in widget -->
-				<div data-dojo-type="larson.login.mainLogin" class="floatLeft padding20 borderLeft lightGrayBorder" id="signinNode"></div>
-				<!-- bring in sign out widget -->
-				<div data-dojo-type="larson.login.signout" class="floatLeft padding20 borderLeft lightGrayBorder hidden" id="signoutNode"></div>
-				<div class="floatLeft padding20 borderLeft lightGrayBorder">
-					Help
 				</div>
 			</div>
 			<div class="clearFix"></div>
 		</div><!-- .toolBar -->
 		<div class="mainContentArea marginTop">
-			<div class="sideBar border padding10 lightGrayBorder borderRadius marginRight grayBackground floatLeft">
-				Sidebar Items go here
+			<div class="secondToolbar borderTop borderBottom lightGrayBorder marginTop marginBottom padding10 alignCenter">
+				Vegetables | Eggs | Raw Milk | Handmade Goods
 			</div>
-			<div>
-				Main item listings will go here
+			<div class="oneItem padding10 grayBackground border lightGrayBorder borderRadius">
+				Item content goes here
+				<br />
+				Item content goes here
+				<br />
+				Item content goes here
+				<br />
+				Item content goes here
+				<br />
+				Item content goes here
+				<br />
+				Item content goes here
+				<br />
+				Item content goes here
+				<br />
 			</div>
+			<div class="oneItem padding10 grayBackground border lightGrayBorder borderRadius">
+				Item content goes here
+				<br />
+				Item content goes here
+				<br />
+				Item content goes here
+				<br />
+			</div>
+			<div class="oneItem padding10 grayBackground border lightGrayBorder borderRadius">
+				Item content goes here
+			</div>
+			<div class="oneItem padding10 grayBackground border lightGrayBorder borderRadius">
+				Item content goes here
+			</div>
+			<div class="oneItem padding10 grayBackground border lightGrayBorder borderRadius">
+				Item content goes here
+				<br />
+				Item content goes here
+				<br />
+				Item content goes here
+				<br />
+				Item content goes here
+				<br />
+			</div>
+			<div class="oneItem padding10 grayBackground border lightGrayBorder borderRadius">
+				Item content goes here
+				<br />
+				Item content goes here
+				<br />
+				Item content goes here
+				<br />
+			</div>
+			<div class="oneItem padding10 grayBackground border lightGrayBorder borderRadius">
+				Item content goes here
+			</div>
+			<div class="oneItem padding10 grayBackground border lightGrayBorder borderRadius">
+				Item content goes here
+				<br />
+				Item content goes here
+				<br />
+				Item content goes here
+				<br />
+				Item content goes here
+				<br />
+				Item content goes here
+				<br />
+				Item content goes here
+				<br />
+				Item content goes here
+				<br />
+			</div>
+			<div class="oneItem padding10 grayBackground border lightGrayBorder borderRadius">
+				Item content goes here
+				<br />
+				Item content goes here
+				<br />
+				Item content goes here
+				<br />
+			</div>
+			<div class="oneItem padding10 grayBackground border lightGrayBorder borderRadius">
+				Item content goes here
+			</div>
+			<div class="oneItem padding10 grayBackground border lightGrayBorder borderRadius">
+				Item content goes here
+			</div>
+			<div class="oneItem padding10 grayBackground border lightGrayBorder borderRadius">
+				Item content goes here
+				<br />
+				Item content goes here
+				<br />
+				Item content goes here
+				<br />
+				Item content goes here
+				<br />
+			</div>
+			<div class="oneItem padding10 grayBackground border lightGrayBorder borderRadius">
+				Item content goes here
+				<br />
+				Item content goes here
+				<br />
+				Item content goes here
+				<br />
+			</div>
+			<div class="oneItem padding10 grayBackground border lightGrayBorder borderRadius">
+				Item content goes here
+			</div>
+			<div class="oneItem padding10 grayBackground border lightGrayBorder borderRadius">
+				Item content goes here
+				<br />
+				Item content goes here
+				<br />
+				Item content goes here
+				<br />
+				Item content goes here
+				<br />
+				Item content goes here
+				<br />
+				Item content goes here
+				<br />
+				Item content goes here
+				<br />
+			</div>
+			<div class="oneItem padding10 grayBackground border lightGrayBorder borderRadius">
+				Item content goes here
+				<br />
+				Item content goes here
+				<br />
+				Item content goes here
+				<br />
+			</div>
+			<div class="oneItem padding10 grayBackground border lightGrayBorder borderRadius">
+				Item content goes here
+			</div>
+			<div class="oneItem padding10 grayBackground border lightGrayBorder borderRadius">
+				Item content goes here
+			</div>
+			<div class="oneItem padding10 grayBackground border lightGrayBorder borderRadius">
+				Item content goes here
+				<br />
+				Item content goes here
+				<br />
+				Item content goes here
+				<br />
+				Item content goes here
+				<br />
+			</div>
+			<div class="oneItem padding10 grayBackground border lightGrayBorder borderRadius">
+				Item content goes here
+				<br />
+				Item content goes here
+				<br />
+				Item content goes here
+				<br />
+			</div>
+			<div class="oneItem padding10 grayBackground border lightGrayBorder borderRadius">
+				Item content goes here
+			</div>
+			<div class="clearFix"></div>
 		</div>
 	</div><!-- .pageWrapper -->
 </body>

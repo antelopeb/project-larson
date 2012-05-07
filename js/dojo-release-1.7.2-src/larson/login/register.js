@@ -12,10 +12,11 @@ define([
 	"dijit/form/ValidationTextBox",
 	"dijit/Dialog",
 	"dijit/form/Form",
+	"dojo/dom-form",
 	"dojo/text!./resources/register.html",
 	"dojo/text!./resources/registerDialog.html"
     ], function(_Widget, _Templated, declare, cookie, ready, parser, connect, 
-    Button, TextBox, Dialog, form, template, dialogTemplate) {
+    Button, TextBox, Dialog, form, domForm, template, dialogTemplate) {
    
     declare("larson.login.register", [_Widget, _Templated], {
         templateString: template,
@@ -47,19 +48,7 @@ define([
         	})
 
         	this.dialog.show()
-        	
-        	//add the form watcher
-        	var myForm = dijit.byId("registerForm")
-        	
-			myForm.watch('value', function() {
-				if(myForm.isValid()) {
-					dijit.byId("registerButton").setAttribute('disabled', false)
-				}
-				else {
-					dijit.byId("registerButton").setAttribute('disabled', true)
-				}
-			})
-			
+        				
 			//add the email validator
 			var emailAddress = dijit.byId("emailAddress")
         	
@@ -85,7 +74,31 @@ define([
         	var registerButton = dijit.byId("registerButton")
         	
         	connect.connect(registerButton, "onClick", function() {
-        		alert("hello there")
+				var formId = "registerForm",
+					formJson = domForm.toJson(formId),
+					username = dijit.byId("emailAddress").get("value")
+
+				//add the form watcher
+				var myForm = dijit.byId("registerForm")
+				
+				if(myForm.isValid()) {
+					dojo.xhrPut({
+						url: "http://localhost/users/" + username,
+						handleAs: "json",
+						putData: formJson,
+						load: function(data) {
+							dijit.byId('registerDialog').hide()
+							alert("Congrats, " + data.firstname + ", you've been successfully registered! Click sign in to get started")
+						},
+						error: function() {
+							dojo.byId("generalError").innerHTML = "There was a problem"
+						}
+					})
+				}
+				else {
+					dojo.byId("generalError").innerHTML = "Please complete all fields first"
+				}
+
         	})        	
         }
     })
